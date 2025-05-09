@@ -1,15 +1,21 @@
 {
-  "name": "/",
-  "description": "",
-  "minimum-stability": "",
-  "license": "",
+  "name": "blog/blog",
+  "description": "This is a blog project with MVC",
+  "minimum-stability": "stable",
+  "license": "proprietary",
   "authors": [
     {
-      "name": "",
-      "email": ""
+      "name": "ali",
+      "email": "ali.kazemayni79@gmail.com"
     }
   ],
   "require": {
-
+  },
+  "autoload": {
+    "psr-4": {
+      "Controllers\\": "controllers/",
+      "Models\\": "models/",
+      "Core\\": "core/"
+    }
   }
 }
