@@ -31,20 +31,20 @@ class Log
 
     public static function print(mixed $value, bool $isDie = false, $saveInFile = false): void
     {
-        self::pre($value, 'print_r', $isDie);
         $saveInFile && self::writeToFile($value, 'info');
+        self::pre($value, 'print_r', $isDie);
     }
 
     public static function error(mixed $value, bool $isDie = false, $saveInFile = false): void
     {
-        self::pre($value, 'print_r', $isDie, 'error');
         $saveInFile && self::writeToFile($value, 'error');
+        self::pre($value, 'print_r', $isDie, 'error');
     }
 
     public static function dump(mixed $value, bool $isDie = false, $saveInFile = false): void
     {
-        self::pre($value, 'var_dump', $isDie);
         $saveInFile && self::writeToFile($value, 'info');
+        self::pre($value, 'var_dump', $isDie);
     }
 
     private static function pre(mixed $value, string $method, bool $isDie, string $style = 'default'): void
