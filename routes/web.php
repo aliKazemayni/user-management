@@ -1,6 +1,10 @@
 <?php
 
+use Controllers\HomeController;
 use Core\Router;
 
-Router::get('/', ['HomeController', 'index']);
-Router::get('about', ['HomeController', 'about']);
+Router::get('/', [HomeController::class, 'index']);
+Router::get('about', [HomeController::class, 'about']);
+Router::get('about/{id}', [HomeController::class, 'get']);
+Router::get('about/{id}/comment', [HomeController::class, 'get']);
+Router::get('about/{id}/{test}', [HomeController::class, 'show']);
