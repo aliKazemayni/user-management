@@ -2,7 +2,7 @@
 
 namespace Core;
 
-use Helpers\Log;
+use Core\Log\Error;
 
 class Router
 {
@@ -48,7 +48,7 @@ class Router
                 $paramNames = $route['params'];
 
                 if (count($paramNames) !== count($matches)) {
-                    Log::error("Route parameter count mismatch", false);
+                    Error::show("Route parameter count mismatch", false);
                     return;
                 }
 
@@ -59,14 +59,14 @@ class Router
                 [$controllerClass, $method] = $route['action'];
 
                 if (!class_exists($controllerClass)) {
-                    Log::error("Controller not found: $controllerClass", false);
+                    Error::show("Controller not found: $controllerClass", false);
                     return;
                 }
 
                 $controller = new $controllerClass();
 
                 if (!method_exists($controller, $method)) {
-                    Log::error("Method not found: $method in controller $controllerClass", false);
+                    Error::show("Method not found: $method in controller $controllerClass", false);
                     return;
                 }
 
@@ -75,6 +75,6 @@ class Router
             }
         }
 
-        Log::error("404 - Page not found");
+        Error::show("404 - Page not found");
     }
 }
