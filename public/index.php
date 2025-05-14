@@ -1,6 +1,6 @@
 <?php
 
-use Core\Router;
+use core\Router;
 use Dotenv\Dotenv;
 
 require_once __DIR__ . '/../vendor/autoload.php';

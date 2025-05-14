@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-use Helpers\Log;
+use Core\Log;
 
 class HomeController
 {
