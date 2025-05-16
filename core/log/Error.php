@@ -4,13 +4,14 @@ namespace Core\Log;
 
 class Error extends Logger
 {
-
-    #[\Override] static function getFilePath(): string
+    #[\Override]
+    protected static function getFilePath(): string
     {
         return  __DIR__ . '/../storage/logs/error.log';
     }
 
-    #[\Override] static function getStyle(): string
+    #[\Override]
+    protected static function getStyle(): string
     {
         return "
                 color:#F3F3E0;
@@ -22,9 +23,15 @@ class Error extends Logger
         ";
     }
 
-    public static function show(mixed $value, bool $isDie = false, $saveInFile = false): void
+    public static function show(mixed $value, bool $isDie = false, bool $saveInFile = false): void
     {
         $saveInFile && static::writeToFile($value, 'error');
+        static::pre($value, 'print_r', $isDie, 'error');
+    }
+
+    public static function database(mixed $value, bool $isDie = false, bool $saveInFile = false): void
+    {
+        $saveInFile && static::writeToFile($value, 'error' , __DIR__ . '/../storage/logs/database.log');
         static::pre($value, 'print_r', $isDie, 'error');
     }
 
