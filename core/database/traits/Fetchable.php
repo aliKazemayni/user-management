@@ -3,6 +3,7 @@
 namespace Core\Database\Traits;
 
 use PDO;
+use PDOStatement;
 
 trait Fetchable
 {
