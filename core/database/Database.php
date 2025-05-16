@@ -2,6 +2,7 @@
 
 namespace Core\Database;
 
+use Core\Log\Error;
 use Exception;
 use PDO;
 use PDOException;
@@ -19,7 +20,7 @@ class Database
         return "mysql:host=$host;dbname=$db;port=$port;charset=utf8mb4";
     }
 
-    public static function connect()
+    public static function connect(): ?PDO
     {
         if (self::$connection === null) {
             try {
@@ -31,10 +32,15 @@ class Database
                 self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             } catch (PDOException|Exception $exception) {
-                die($exception->getMessage());
+                Error::database($exception->getMessage(), true, true);
             }
         }
 
         return self::$connection;
+    }
+
+    public static function query(string $query): QueryBuilder
+    {
+        return new QueryBuilder($query);
     }
 }
