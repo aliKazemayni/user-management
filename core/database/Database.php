@@ -39,8 +39,8 @@ class Database
         return self::$connection;
     }
 
-    public static function query(string $query): QueryBuilder
+    public static function query(string $query,array $params = []): QueryBuilder
     {
-        return new QueryBuilder($query);
+        return new QueryBuilder($query,$params);
     }
 }
