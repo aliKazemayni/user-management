@@ -7,7 +7,7 @@ class Error extends Logger
     #[\Override]
     protected static function getFilePath(): string
     {
-        return  __DIR__ . '/../storage/logs/error.log';
+        return dirname(__DIR__, 2) . '/storage/logs/error.log';
     }
 
     #[\Override]
@@ -31,7 +31,7 @@ class Error extends Logger
 
     public static function database(mixed $value, bool $isDie = false, bool $saveInFile = false): void
     {
-        $saveInFile && static::writeToFile($value, 'error' , __DIR__ . '/../storage/logs/database.log');
+        $saveInFile && static::writeToFile($value, 'error' , dirname(__DIR__, 2) . '/storage/logs/database.log');
         static::pre($value, 'print_r', $isDie, 'error');
     }
 

@@ -6,7 +6,7 @@ class Log extends Logger
 {
     #[\Override] static function getFilePath(): string
     {
-        return  __DIR__ . '/../storage/logs/app.log';
+        return dirname(__DIR__, 2) . '/storage/logs/app.log';
     }
 
     #[\Override] static function getStyle(): string
