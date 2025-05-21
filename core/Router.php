@@ -44,7 +44,7 @@ class Router
 
         foreach (self::$routes[$requestMethod] ?? [] as $route) {
             if (preg_match($route['pattern'], $uri, $matches)) {
-                array_shift($matches); // حذف full match
+                array_shift($matches);
                 $paramNames = $route['params'];
 
                 if (count($paramNames) !== count($matches)) {
