@@ -8,9 +8,9 @@ use Models\Post;
 
 class HomeController
 {
-    public function index(): void
+    public function index(): null
     {
-        echo "🏠 صفحه اصلی وبلاگ";
+        return view('home' , ['title' => 'this is test']);
     }
 
     public function about(): void
