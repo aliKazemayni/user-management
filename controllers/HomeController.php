@@ -10,7 +10,7 @@ class HomeController
 {
     public function index(): null
     {
-        return view('home' , ['title' => 'this is test']);
+        return view('home' , ['title' => 'this is test' , "age" => 20]);
     }
 
     public function about(): void
