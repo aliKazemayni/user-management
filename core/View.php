@@ -50,9 +50,9 @@ class View
     private static function applyLayout(string $content): string
     {
         if (preg_match('/<layout\s+file="([^"]+)">/', $content, $match)) {
-            $layoutFile = __DIR__ . '/../../resources/views/layouts/' . $match[1] . '.php';
+            $layoutFile = __DIR__ . '/../../views/layouts/' . $match[1] . '.php';
             if (!file_exists($layoutFile)) {
-                die("Layout file not found: {$layoutFile}");
+                Error::show("Layout file not found: {$layoutFile}",true);
             }
 
             preg_match_all('/<section\s+name="([^"]+)">(.*?)<\/section>/s', $content, $sections, PREG_SET_ORDER);
