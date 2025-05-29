@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace Core\View;
 
 use Core\Log\Error;
 

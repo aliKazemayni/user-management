@@ -1,5 +1,7 @@
 <?php
-use Core\View;
+
+
+use Core\View\View;
 
 if (!function_exists('view')) {
     function view(string $view, array $data = []): void
