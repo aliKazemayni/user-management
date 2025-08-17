@@ -8,8 +8,8 @@ class View
 {
     public static function make(string $template, array $data = []): void
     {
-        $templatePath = __DIR__ . '/../views/' . $template . '.view.php';
-
+        $template = str_replace('.' , '/' , $template);
+        $templatePath = dirname(__DIR__, 2) . '/views/' . $template . '.view.php';
         if (!file_exists($templatePath)) {
             Error::show("view not find $template", true);
         }
@@ -50,7 +50,7 @@ class View
     private static function applyLayout(string $content): string
     {
         if (preg_match('/<layout\s+file="([^"]+)">/', $content, $match)) {
-            $layoutFile = __DIR__ . '/../../views/layouts/' . $match[1] . '.php';
+            $layoutFile = dirname(__DIR__, 2) . '/views/layouts/' . $match[1] . '.view.php';
             if (!file_exists($layoutFile)) {
                 Error::show("Layout file not found: {$layoutFile}",true);
             }
