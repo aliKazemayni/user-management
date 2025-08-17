@@ -1,48 +1,41 @@
-/* globals Chart:false */
+const editUserModal = document.getElementById('editUserModal');
+editUserModal.addEventListener('show.bs.modal', function (event) {
+    let button = event.relatedTarget;
 
-(() => {
-  'use strict'
+    let id = button.dataset.id;
+    let name = button.dataset.name;
+    let email = button.dataset.email;
+    let avatar = button.dataset.avatar;
 
-  // Graphs
-  const ctx = document.getElementById('myChart')
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
-      ],
-      datasets: [{
-        data: [
-          15339,
-          21345,
-          18483,
-          24003,
-          23489,
-          24092,
-          12034
-        ],
-        lineTension: 0,
-        backgroundColor: 'transparent',
-        borderColor: '#007bff',
-        borderWidth: 4,
-        pointBackgroundColor: '#007bff'
-      }]
-    },
-    options: {
-      plugins: {
-        legend: {
-          display: false
-        },
-        tooltip: {
-          boxPadding: 3
+    console.log("Opening modal for user:", id, name, email, avatar);
+
+    document.getElementById('editUserId').value = id;
+    document.getElementById('editUserName').value = name;
+    document.getElementById('editUserEmail').value = email;
+
+    let preview = document.getElementById('editUserAvatarPreview');
+    preview.src = avatar && avatar.trim() !== ""
+        ? `/uploads/avatars/${avatar}`
+        : "/uploads/avatars/default.png";
+
+    document.getElementById('editUserForm').action = `/user/${id}/update`;
+});
+
+
+
+const avatarInput = document.querySelector('#editUserForm input[name="avatar"]');
+const avatarPreview = document.getElementById('editUserAvatarPreview');
+
+avatarInput.addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            avatarPreview.src = e.target.result;
         }
-      }
+        reader.readAsDataURL(file);
+    } else {
+        // اگر هیچ فایلی انتخاب نشد، عکس پیش‌فرض
+        avatarPreview.src = '/uploads/avatars/default.png';
     }
-  })
-})()
+});
