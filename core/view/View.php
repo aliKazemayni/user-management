@@ -29,7 +29,7 @@ class View
 
     private static function parseCustomTags(string $content): string
     {
-        $content = preg_replace_callback('/<print\s+value="([^"]+)">/', fn($m) => "<?= htmlspecialchars({$m[1]}) ?>", $content);
+        $content = preg_replace_callback('/<print\s+value="([^"]+)">/', fn($m) => "<?= htmlspecialchars({$m[1]} ?? '' )  ?>", $content);
 
         $content = preg_replace_callback('/<if\s+condition="([^"]+)">/', fn($m) => "<?php if ({$m[1]}): ?>", $content);
         $content = str_replace('<else>', '<?php else: ?>', $content);
