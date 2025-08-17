@@ -15,6 +15,7 @@
   },
   "autoload": {
     "psr-4": {
+      "Middlewares\\": "middlewares/",
       "Controllers\\": "controllers/",
       "Helpers\\": "helpers/",
       "Models\\": "models/",

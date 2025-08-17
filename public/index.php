@@ -21,4 +21,5 @@ if ($_ENV['APP_DEBUG'] === 'true') {
     ini_set('display_errors', '0');
 }
 
+require_once __DIR__ . '/../core/Middlewares.php';
 Router::dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
