@@ -20,6 +20,14 @@ trait Crudable
         )->one();
     }
 
+    public static function findOne(string $field, mixed $value): array
+    {
+        return Database::query(
+            self::queryBuilder("SELECT * FROM @tn WHERE $field = :value"),
+            ['value' => $value]
+        )->one();
+    }
+
     public static function create(array $data): bool
     {
         $columns = implode(', ', array_keys($data));
