@@ -1,10 +1,10 @@
 <?php
 
 use Controllers\AuthController;
-use Controllers\HomeController;
+use Controllers\UsersController;
 use Core\Router;
 
-Router::get('/dashboard' , [HomeController::class , 'index']);
+Router::get('/dashboard' , [UsersController::class , 'index']);
 
 Router::get('/register', [AuthController::class, 'registerForm']);
 Router::post('/register', [AuthController::class, 'register']);
