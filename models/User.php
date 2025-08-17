@@ -9,6 +9,6 @@ class User extends Model{
     #[\Override]
     protected static function table(): string
     {
-        return "post";
+        return "users";
     }
 }
