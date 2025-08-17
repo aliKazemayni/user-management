@@ -1,7 +1,7 @@
 <layout file="auth">
 
     <section name="title">
-        Login
+        Register
     </section>
 
     <section name="content">
@@ -21,7 +21,8 @@
             </symbol>
         </svg>
         <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-            <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
+            <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme"
+                    type="button"
                     aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
                 <svg class="bi my-1 theme-icon-active" aria-hidden="true">
                     <use href="#circle-half"></use>
@@ -53,7 +54,8 @@
                     </button>
                 </li>
                 <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
+                    <button type="button" class="dropdown-item d-flex align-items-center active"
+                            data-bs-theme-value="auto"
                             aria-pressed="true">
                         <svg class="bi me-2 opacity-50" aria-hidden="true">
                             <use href="#circle-half"></use>
@@ -66,19 +68,23 @@
                 </li>
             </ul>
         </div>
+
+
         <main class="form-signin w-100 m-auto">
-            <form action="/login" method="post">
+            <form action="/register" method="post">
                 <img class="mb-4" src="/assets/bootstrap-logo.svg" alt="" width="72" height="57">
-                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                <h1 class="h3 mb-3 fw-normal">Welcome</h1>
                 <h5 class="h5 mb-3 fw-normal">
                     <print value="$msg"></print>
                 </h5>
-
                 <div class="form-floating">
                     <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">
-                        Email address
-                    </label>
+                    <label for="floatingInput">Email address</label>
+                </div>
+
+                <div class="form-floating">
+                    <input name="name" type="text" class="form-control" id="nameInput" placeholder="name">
+                    <label for="floatingInput">Name</label>
                 </div>
 
                 <div class="form-floating">
@@ -87,16 +93,17 @@
                 </div>
 
                 <div class="form-check text-start my-3">
-                    <input class="form-check-input" type="checkbox" value="remember-me" id="checkDefault">
+                    <input class="form-check-input" type="checkbox"
+                        value="remember-me"
+                        id="checkDefault">
                     <label class="form-check-label" for="checkDefault">
                         Remember me
                     </label>
                 </div>
-
-                <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
-                <a href="/register" class="btn w-100 py-2" type="submit">Register</a>
-                <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2025</p></form>
-
+                <button class="btn btn-primary w-100 py-2" type="submit">Register</button>
+                <a href="/login" class="btn w-100 py-2" type="submit">Sign in</a>
+                <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2025</p>
+            </form>
         </main>
 
     </section>
